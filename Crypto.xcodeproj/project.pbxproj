@@ -7,23 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		45408A2129B600900099D827 /* CoinsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45408A2029B600900099D827 /* CoinsListViewController.swift */; };
 		457C680D29B358A00036E956 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457C680C29B358A00036E956 /* AppDelegate.swift */; };
 		457C680F29B358A00036E956 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457C680E29B358A00036E956 /* SceneDelegate.swift */; };
-		457C681129B358A00036E956 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457C681029B358A00036E956 /* ViewController.swift */; };
-		457C681429B358A00036E956 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 457C681229B358A00036E956 /* Main.storyboard */; };
+		457C681129B358A00036E956 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457C681029B358A00036E956 /* LoginViewController.swift */; };
 		457C681629B358A10036E956 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 457C681529B358A10036E956 /* Assets.xcassets */; };
 		457C681929B358A10036E956 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 457C681729B358A10036E956 /* LaunchScreen.storyboard */; };
+		457C682529B359DC0036E956 /* MyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457C682329B359DC0036E956 /* MyTextField.swift */; };
+		457C682629B359DC0036E956 /* MyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457C682429B359DC0036E956 /* MyButton.swift */; };
+		459D15A329B35FA90009A1DC /* adventpro-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 457C682729B35A250036E956 /* adventpro-regular.ttf */; };
+		459D15A729B360D40009A1DC /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D15A629B360D40009A1DC /* Coin.swift */; };
+		459D15AA29B362200009A1DC /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D15A929B362200009A1DC /* APIService.swift */; };
+		459D15AE29B364CC0009A1DC /* CoinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D15AD29B364CC0009A1DC /* CoinTableViewCell.swift */; };
+		459D15B429B366560009A1DC /* CoinInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D15B329B366560009A1DC /* CoinInfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		45408A2029B600900099D827 /* CoinsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsListViewController.swift; sourceTree = "<group>"; };
 		457C680929B358A00036E956 /* Crypto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Crypto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		457C680C29B358A00036E956 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		457C680E29B358A00036E956 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		457C681029B358A00036E956 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		457C681329B358A00036E956 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		457C681029B358A00036E956 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		457C681529B358A10036E956 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		457C681829B358A10036E956 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		457C681A29B358A10036E956 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		457C682329B359DC0036E956 /* MyTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTextField.swift; sourceTree = "<group>"; };
+		457C682429B359DC0036E956 /* MyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyButton.swift; sourceTree = "<group>"; };
+		457C682729B35A250036E956 /* adventpro-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "adventpro-regular.ttf"; sourceTree = "<group>"; };
+		459D15A629B360D40009A1DC /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
+		459D15A929B362200009A1DC /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		459D15AD29B364CC0009A1DC /* CoinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinTableViewCell.swift; sourceTree = "<group>"; };
+		459D15B329B366560009A1DC /* CoinInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinInfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +70,70 @@
 		457C680B29B358A00036E956 /* Crypto */ = {
 			isa = PBXGroup;
 			children = (
+				459D15AC29B364A20009A1DC /* Cells */,
+				457C682029B359420036E956 /* Model */,
+				459D15AB29B362760009A1DC /* Controllers */,
+				459D15A829B361FD0009A1DC /* Network */,
+				457C682129B359580036E956 /* Fonts */,
+				457C682229B359A60036E956 /* Extensions */,
 				457C680C29B358A00036E956 /* AppDelegate.swift */,
 				457C680E29B358A00036E956 /* SceneDelegate.swift */,
-				457C681029B358A00036E956 /* ViewController.swift */,
-				457C681229B358A00036E956 /* Main.storyboard */,
 				457C681529B358A10036E956 /* Assets.xcassets */,
 				457C681729B358A10036E956 /* LaunchScreen.storyboard */,
 				457C681A29B358A10036E956 /* Info.plist */,
 			);
 			path = Crypto;
+			sourceTree = "<group>";
+		};
+		457C682029B359420036E956 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				459D15A629B360D40009A1DC /* Coin.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		457C682129B359580036E956 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				457C682729B35A250036E956 /* adventpro-regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		457C682229B359A60036E956 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				457C682429B359DC0036E956 /* MyButton.swift */,
+				457C682329B359DC0036E956 /* MyTextField.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		459D15A829B361FD0009A1DC /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				459D15A929B362200009A1DC /* APIService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		459D15AB29B362760009A1DC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				457C681029B358A00036E956 /* LoginViewController.swift */,
+				45408A2029B600900099D827 /* CoinsListViewController.swift */,
+				459D15B329B366560009A1DC /* CoinInfoViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		459D15AC29B364A20009A1DC /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				459D15AD29B364CC0009A1DC /* CoinTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,8 +195,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				457C681929B358A10036E956 /* LaunchScreen.storyboard in Resources */,
+				459D15A329B35FA90009A1DC /* adventpro-regular.ttf in Resources */,
 				457C681629B358A10036E956 /* Assets.xcassets in Resources */,
-				457C681429B358A00036E956 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +207,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				457C681129B358A00036E956 /* ViewController.swift in Sources */,
+				459D15A729B360D40009A1DC /* Coin.swift in Sources */,
+				459D15AE29B364CC0009A1DC /* CoinTableViewCell.swift in Sources */,
+				45408A2129B600900099D827 /* CoinsListViewController.swift in Sources */,
+				459D15AA29B362200009A1DC /* APIService.swift in Sources */,
+				457C681129B358A00036E956 /* LoginViewController.swift in Sources */,
+				459D15B429B366560009A1DC /* CoinInfoViewController.swift in Sources */,
 				457C680D29B358A00036E956 /* AppDelegate.swift in Sources */,
+				457C682629B359DC0036E956 /* MyButton.swift in Sources */,
 				457C680F29B358A00036E956 /* SceneDelegate.swift in Sources */,
+				457C682529B359DC0036E956 /* MyTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		457C681229B358A00036E956 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				457C681329B358A00036E956 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		457C681729B358A10036E956 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,7 +360,6 @@
 				INFOPLIST_FILE = Crypto/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -320,7 +387,6 @@
 				INFOPLIST_FILE = Crypto/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
