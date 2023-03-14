@@ -70,14 +70,11 @@
 		457C680B29B358A00036E956 /* Crypto */ = {
 			isa = PBXGroup;
 			children = (
-				459D15AC29B364A20009A1DC /* Cells */,
-				457C682029B359420036E956 /* Model */,
-				459D15AB29B362760009A1DC /* Controllers */,
-				459D15A829B361FD0009A1DC /* Network */,
-				457C682129B359580036E956 /* Fonts */,
-				457C682229B359A60036E956 /* Extensions */,
 				457C680C29B358A00036E956 /* AppDelegate.swift */,
 				457C680E29B358A00036E956 /* SceneDelegate.swift */,
+				457C682029B359420036E956 /* Model */,
+				459D15AB29B362760009A1DC /* View */,
+				459D15A829B361FD0009A1DC /* Network */,
 				457C681529B358A10036E956 /* Assets.xcassets */,
 				457C681729B358A10036E956 /* LaunchScreen.storyboard */,
 				457C681A29B358A10036E956 /* Info.plist */,
@@ -101,15 +98,6 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		457C682229B359A60036E956 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				457C682429B359DC0036E956 /* MyButton.swift */,
-				457C682329B359DC0036E956 /* MyTextField.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		459D15A829B361FD0009A1DC /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,14 +106,17 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		459D15AB29B362760009A1DC /* Controllers */ = {
+		459D15AB29B362760009A1DC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				45FE958429C049430015EED5 /* Extensions */,
+				459D15AC29B364A20009A1DC /* Cells */,
+				457C682129B359580036E956 /* Fonts */,
 				457C681029B358A00036E956 /* LoginViewController.swift */,
 				45408A2029B600900099D827 /* CoinsListViewController.swift */,
 				459D15B329B366560009A1DC /* CoinInfoViewController.swift */,
 			);
-			path = Controllers;
+			path = View;
 			sourceTree = "<group>";
 		};
 		459D15AC29B364A20009A1DC /* Cells */ = {
@@ -134,6 +125,15 @@
 				459D15AD29B364CC0009A1DC /* CoinTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		45FE958429C049430015EED5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				457C682429B359DC0036E956 /* MyButton.swift */,
+				457C682329B359DC0036E956 /* MyTextField.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

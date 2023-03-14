@@ -24,21 +24,17 @@ class CoinInfoViewController: UIViewController {
     }()
     // MARK:- TEST DELETE OR EDIT
     @objc private func logOut() {
-        let lgvc = LoginViewController()
+        //let lgvc = LoginViewController()
 //        present(lgvc, animated: true)
         dismiss(animated: true)
 //        lgvc.modalPresentationStyle = .fullScreen
         //present(lgvc, animated: true)
 //        show(lgvc, sender: UIButton.self)
     }
-//    override func viewDi
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        print("info view disappeared")
-    }
+    
     //TEST DELETE OR EDIT
     deinit {
-        print("EDIT SCREEN DIED")
+        print("INFO SCREEN DIED")
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,16 +49,4 @@ class CoinInfoViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

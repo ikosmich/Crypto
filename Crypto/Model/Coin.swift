@@ -7,15 +7,30 @@ import Foundation
 
 // MARK: - Coin
 struct Coin: Codable {
-    let data: DataClass
+    let data: Data
+    let status: Status
 
     enum CodingKeys: String, CodingKey {
         case data = "data"
+        case status = "status"
+    }
+}
+
+// MARK: - Status
+struct Status: Codable {
+    let elapsed: Int
+    let timestamp: String
+    let errorMessage: String?
+
+    enum CodingKeys: String, CodingKey {
+        case elapsed = "elapsed"
+        case timestamp = "timestamp"
+        case errorMessage = "error_message"
     }
 }
 
 // MARK: - DataClass
-struct DataClass: Codable {
+struct Data: Codable {
     let id: String
     let serialID: Int
     let symbol: String
@@ -103,7 +118,6 @@ struct MarketData: Codable {
     let percentChangeUsdLast24_Hours: Double?
     let percentChangeBtcLast24_Hours: Double?
     let percentChangeEthLast24_Hours: Double?
-
     let lastTradeAt: String?
 
     enum CodingKeys: String, CodingKey {

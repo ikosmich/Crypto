@@ -76,11 +76,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @objc func buttonPressed() {
         //TEST DELETE OR EDIT
-        let vc = CoinsListViewController()
-        vc.modalPresentationStyle = .fullScreen
-        vc.modalTransitionStyle = .crossDissolve
+        let listVC = CoinsListViewController()
+//        SceneDelegate().window?.rootViewController = listVC
+        navigationController?.pushViewController(listVC, animated: true)
         
-        present(vc, animated: true, completion: nil)
+//        listVC.modalPresentationStyle = .fullScreen
+//        listVC.title = "COINS"
+//        show(listVC, sender: UIButton())
+        
+        
+        
 //        let alert = UIAlertController(title: "Successfully logged in", message: nil, preferredStyle: .alert)
 //        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive))
 //        alert.addAction(UIAlertAction(title: "Ok", style: .default))
@@ -107,9 +112,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 203/255, green: 223/255, blue: 189/255, alpha: 1)
         setupUI()
+        
         usernameTextField.delegate = self
         passwordTextField.delegate = self
     }
+    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
