@@ -75,21 +75,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }()
     
     @objc func buttonPressed() {
-        //TEST DELETE OR EDIT
         let listVC = CoinsListViewController()
-//        SceneDelegate().window?.rootViewController = listVC
-        navigationController?.pushViewController(listVC, animated: true)
+        // Fixed username/password
+        switch (usernameTextField.text, passwordTextField.text) {
+        case ("1234", "1234"):
+            usernameTextField.text = ""
+            passwordTextField.text = ""
+            navigationController?.pushViewController(listVC, animated: true)
+        default:
+            let alert = UIAlertController(title: "Wrong username or password", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .destructive))
+            self.present(alert, animated: true)
+        }
         
-//        listVC.modalPresentationStyle = .fullScreen
-//        listVC.title = "COINS"
-//        show(listVC, sender: UIButton())
-        
-        
-        
-//        let alert = UIAlertController(title: "Successfully logged in", message: nil, preferredStyle: .alert)
-//        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive))
-//        alert.addAction(UIAlertAction(title: "Ok", style: .default))
-//        self.present(alert, animated: true)
+
     }
     
     private lazy var signUpButton: MyButton = {

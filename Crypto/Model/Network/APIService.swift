@@ -7,9 +7,9 @@
 
 import Foundation
 
-class APIServise {
+final class APIServise {
     static let shared = APIServise()
-    
+    private init() {}
     
     private let coinsTypes = ["btc", "eth", "tron", "luna", "polkadot", "dogecoin", "tether", "stellar", "cardano", "xrp"]
     

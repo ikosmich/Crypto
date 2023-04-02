@@ -19,9 +19,7 @@ class CoinsListViewController: UIViewController {
 // MARK: Show info vc func
     @objc private func info() {
         let infoViewController = CoinInfoViewController()
-        infoViewController.modalPresentationStyle = .fullScreen
-        infoViewController.modalTransitionStyle = .crossDissolve
-        present(infoViewController, animated: true)
+        navigationController?.pushViewController(infoViewController, animated: true)
     }
     deinit {
         print("list controller died".uppercased())
@@ -32,7 +30,7 @@ class CoinsListViewController: UIViewController {
         navigationItem.rightBarButtonItem = .init(title: nil, image: UIImage(systemName: "arrow.up.arrow.down"), target: nil, action: nil)
         navigationItem.leftBarButtonItem = .init(title: nil, image: .init(systemName: "arrowshape.backward.fill"), target: self, action: #selector(logOut))
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(CoinTableViewCell.self, forCellReuseIdentifier: CoinTableViewCell.identifier)
         tableView.dataSource = self
         tableView.delegate = self
         navigationController?.navigationBar.prefersLargeTitles = false
@@ -48,8 +46,6 @@ class CoinsListViewController: UIViewController {
                 
             }
         }
-        
-        
         
         
     }
@@ -71,17 +67,17 @@ extension CoinsListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        var config = cell.defaultContentConfiguration()
-        config.text = coinsArray[indexPath.row].data.name
-        config.secondaryText = String(coinsArray[indexPath.row].data.marketData.priceUsd ?? 0 )
-        cell.contentConfiguration = config
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CoinTableViewCell.identifier, for: indexPath) as? CoinTableViewCell else { return UITableViewCell() }
+        cell.coinImage.image = UIImage(named: coinsArray[indexPath.row].data.symbol)
+        cell.coinName.text = coinsArray[indexPath.row].data.name
+        cell.coinPriceUSD.text = "$ price: \(coinsArray[indexPath.row].data.marketData.priceUsd?.truncate(places: 3) ?? 0)"
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let infoVC = CoinInfoViewController()
         navigationController?.pushViewController(infoVC, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }
