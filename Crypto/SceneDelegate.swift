@@ -26,7 +26,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
        
-        
+        navController.navigationBar.titleTextAttributes = [
+            .font: UIFont(name: "adventpro-semibold", size: 25) ?? UIFont()
+        ]
+        navController.navigationBar.largeTitleTextAttributes = [
+            .font: UIFont(name: "adventpro-semibold", size: 35) ?? UIFont()
+        ]
         window.rootViewController = navController
         self.window = window
         window.makeKeyAndVisible()

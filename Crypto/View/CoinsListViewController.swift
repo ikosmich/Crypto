@@ -33,7 +33,7 @@ class CoinsListViewController: UIViewController {
         tableView.register(CoinTableViewCell.self, forCellReuseIdentifier: CoinTableViewCell.identifier)
         tableView.dataSource = self
         tableView.delegate = self
-        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationBar.prefersLargeTitles = true
         
         addSubViews()
         makeConstraints()
@@ -68,9 +68,25 @@ extension CoinsListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CoinTableViewCell.identifier, for: indexPath) as? CoinTableViewCell else { return UITableViewCell() }
-        cell.coinImage.image = UIImage(named: coinsArray[indexPath.row].data.symbol)
-        cell.coinName.text = coinsArray[indexPath.row].data.name
-        cell.coinPriceUSD.text = "$ price: \(coinsArray[indexPath.row].data.marketData.priceUsd?.truncate(places: 3) ?? 0)"
+        cell.coinImageView.image = UIImage(named: coinsArray[indexPath.row].coinData.symbol)
+        cell.coinNameLabel.text = coinsArray[indexPath.row].coinData.name
+        if let coinCost = coinsArray[indexPath.row].coinData.marketData.priceUSD {
+            cell.coinPriceUSDLabel.text = "$ price: \(coinCost.truncate(places: 3))"
+        } else {
+            cell.coinPriceUSDLabel.text = "$ --"
+        }
+        if let priceChange = coinsArray[indexPath.row].coinData.marketData.lastHourCostChangePercent {
+            if priceChange > 0 {
+                cell.priceChangePerHourLabel.text = "↑ \(priceChange.truncate(places: 2))%"
+                cell.priceChangePerHourLabel.textColor = .systemGreen
+            } else {
+                cell.priceChangePerHourLabel.text = "↓ \(priceChange.truncate(places: 2))%"
+                cell.priceChangePerHourLabel.textColor = .systemRed
+            }
+        } else {
+            cell.priceChangePerHourLabel.text = "-- %"
+            cell.priceChangePerHourLabel.textColor = .black
+        }
         return cell
     }
     
@@ -79,5 +95,4 @@ extension CoinsListViewController: UITableViewDataSource, UITableViewDelegate {
         navigationController?.pushViewController(infoVC, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
 }

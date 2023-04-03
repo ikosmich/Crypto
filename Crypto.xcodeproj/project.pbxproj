@@ -18,11 +18,11 @@
 		457C682529B359DC0036E956 /* MyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457C682329B359DC0036E956 /* MyTextField.swift */; };
 		457C682629B359DC0036E956 /* MyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457C682429B359DC0036E956 /* MyButton.swift */; };
 		459D15A329B35FA90009A1DC /* adventpro-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 457C682729B35A250036E956 /* adventpro-regular.ttf */; };
-		459D15A729B360D40009A1DC /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D15A629B360D40009A1DC /* Coin.swift */; };
 		459D15AA29B362200009A1DC /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D15A929B362200009A1DC /* APIService.swift */; };
 		459D15AE29B364CC0009A1DC /* CoinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D15AD29B364CC0009A1DC /* CoinTableViewCell.swift */; };
 		459D15B429B366560009A1DC /* CoinInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D15B329B366560009A1DC /* CoinInfoViewController.swift */; };
 		45E28CD429D9F35600C26C0E /* adventpro-semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45E28CD329D9F35600C26C0E /* adventpro-semibold.ttf */; };
+		45F17F0729DACFF800A2A3A9 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F17F0629DACFF800A2A3A9 /* Coin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,11 +39,11 @@
 		457C682329B359DC0036E956 /* MyTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTextField.swift; sourceTree = "<group>"; };
 		457C682429B359DC0036E956 /* MyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyButton.swift; sourceTree = "<group>"; };
 		457C682729B35A250036E956 /* adventpro-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "adventpro-regular.ttf"; sourceTree = "<group>"; };
-		459D15A629B360D40009A1DC /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		459D15A929B362200009A1DC /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		459D15AD29B364CC0009A1DC /* CoinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinTableViewCell.swift; sourceTree = "<group>"; };
 		459D15B329B366560009A1DC /* CoinInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinInfoViewController.swift; sourceTree = "<group>"; };
 		45E28CD329D9F35600C26C0E /* adventpro-semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "adventpro-semibold.ttf"; sourceTree = "<group>"; };
+		45F17F0629DACFF800A2A3A9 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				459D15A829B361FD0009A1DC /* Network */,
-				459D15A629B360D40009A1DC /* Coin.swift */,
+				45F17F0629DACFF800A2A3A9 /* Coin.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -225,9 +225,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				459D15A729B360D40009A1DC /* Coin.swift in Sources */,
 				459D15AE29B364CC0009A1DC /* CoinTableViewCell.swift in Sources */,
 				45408A2129B600900099D827 /* CoinsListViewController.swift in Sources */,
+				45F17F0729DACFF800A2A3A9 /* Coin.swift in Sources */,
 				459D15AA29B362200009A1DC /* APIService.swift in Sources */,
 				457C681129B358A00036E956 /* LoginViewController.swift in Sources */,
 				459D15B429B366560009A1DC /* CoinInfoViewController.swift in Sources */,

@@ -8,46 +8,55 @@
 import UIKit
 
 protocol CoinTableViewCellProtocol {
-    var coinImage: UIImageView { get }
-    var coinName: UILabel { get }
-    var coinPriceUSD: UILabel { get }
+    var coinImageView: UIImageView { get }
+    var coinNameLabel: UILabel { get }
+    var coinPriceUSDLabel: UILabel { get }
 }
 
 class CoinTableViewCell: UITableViewCell, CoinTableViewCellProtocol {
-    var coinImage = UIImageView()
-    var coinName = UILabel()
-    var coinPriceUSD = UILabel()
+    var coinImageView = UIImageView()
+    var coinNameLabel = UILabel()
+    var coinPriceUSDLabel = UILabel()
+    var priceChangePerHourLabel = UILabel()
     static let identifier = "CoinCell"
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        coinName.font = UIFont(name: "adventpro-semibold", size: 27)
-        coinPriceUSD.font = UIFont(name: "adventpro-regular", size: 18)
-        coinImage.translatesAutoresizingMaskIntoConstraints = false
-        coinName.translatesAutoresizingMaskIntoConstraints = false
-        coinPriceUSD.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(coinImage)
-        contentView.addSubview(coinName)
-        contentView.addSubview(coinPriceUSD)
-        
-        NSLayoutConstraint.activate([
-            coinImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
-            coinImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
-            coinImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
-            coinImage.heightAnchor.constraint(equalToConstant: 75),
-            coinImage.widthAnchor.constraint(equalToConstant: 75),
-            coinName.leadingAnchor.constraint(equalTo: coinImage.trailingAnchor, constant: 20),
-            coinName.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            coinName.bottomAnchor.constraint(equalTo: coinPriceUSD.topAnchor, constant: 10),
-            coinPriceUSD.leadingAnchor.constraint(equalTo: coinImage.trailingAnchor, constant: 20),
-            coinPriceUSD.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 10),
-            coinPriceUSD.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 10)
-        ])
+        makeCell()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private func makeCell() {
+        coinNameLabel.font = UIFont(name: "adventpro-semibold", size: 27)
+        coinPriceUSDLabel.font = UIFont(name: "adventpro-regular", size: 18)
+        priceChangePerHourLabel.font = UIFont(name: "adventpro-regular", size: 18)
+        coinImageView.translatesAutoresizingMaskIntoConstraints = false
+        coinNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        coinPriceUSDLabel.translatesAutoresizingMaskIntoConstraints = false
+        priceChangePerHourLabel.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(coinImageView)
+        contentView.addSubview(coinNameLabel)
+        contentView.addSubview(coinPriceUSDLabel)
+        contentView.addSubview(priceChangePerHourLabel)
+        
+        NSLayoutConstraint.activate([
+            contentView.heightAnchor.constraint(greaterThanOrEqualTo: coinImageView.heightAnchor),
+            coinImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
+            coinImageView.heightAnchor.constraint(equalToConstant: 75),
+            coinImageView.widthAnchor.constraint(equalTo: coinImageView.heightAnchor),
+            coinNameLabel.leadingAnchor.constraint(equalTo: coinImageView.trailingAnchor, constant: 20),
+            coinNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            coinNameLabel.bottomAnchor.constraint(equalTo: coinPriceUSDLabel.topAnchor, constant: 10),
+            coinPriceUSDLabel.leadingAnchor.constraint(equalTo: coinImageView.trailingAnchor, constant: 20),
+            coinPriceUSDLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 10),
+            priceChangePerHourLabel.topAnchor.constraint(equalTo: coinNameLabel.bottomAnchor, constant: 10),
+            priceChangePerHourLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5)
+        ])
+    }
+    
 }
 
 

@@ -24,21 +24,22 @@ final class APIServise {
             let urlTask = URLSession.shared.dataTask(with: request) { data, _, error in
                 guard let data = data else { return }
                 guard error == nil else {
-                    print("Task error\n\(String(describing: error))")
+                    print("Task error\n\(String(describing: error))\n")
                     return
                 }
                 do {
                     let coins = try JSONDecoder().decode(Coin.self, from: data)
+                    
                     completionHandler(coins)
                 } catch {
-                    print("\(String(data: data, encoding: .utf8) ?? "" )")
+                    print("DECODING ERROR: \(error)")
                 }
             }
             urlTask.resume()
             dispachGroup.leave()
         }
         dispachGroup.notify(queue: .main) {
-            print("ALL DATA WAS LOADED")
+            print("Group notify")
         }
       
     }

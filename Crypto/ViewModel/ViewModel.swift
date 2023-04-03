@@ -9,6 +9,8 @@ import Foundation
 
 protocol ViewModelProtocol {
     var updateModel: ((Coin) -> ())? { get set }
+    var coinsArray: [Coin] { get set }
+    
 }
 
 
