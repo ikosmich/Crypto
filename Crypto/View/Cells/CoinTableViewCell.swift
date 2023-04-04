@@ -29,7 +29,7 @@ class CoinTableViewCell: UITableViewCell, CoinTableViewCellProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func makeCell() {
+    func makeCell() {
         coinNameLabel.font = UIFont(name: "adventpro-semibold", size: 27)
         coinPriceUSDLabel.font = UIFont(name: "adventpro-regular", size: 18)
         priceChangePerHourLabel.font = UIFont(name: "adventpro-regular", size: 18)

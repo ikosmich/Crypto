@@ -7,18 +7,25 @@
 
 import Foundation
 
-final class APIServise {
-    static let shared = APIServise()
+fileprivate protocol APIServiceProtocol {
+    var coinsTypes: [String] { get }
+    var urlBase: String { get }
+    var urlTail: String { get }
+    func getCoinsInfo(_ completionHandler: @escaping (Coin) -> Void)
+}
+
+final class APIService: APIServiceProtocol {
+    static var shared = APIService()
     private init() {}
-    
-    private let coinsTypes = ["btc", "eth", "tron", "luna", "polkadot", "dogecoin", "tether", "stellar", "cardano", "xrp"]
-    
+    fileprivate let coinsTypes = ["btc", "eth", "tron", "luna", "polkadot", "dogecoin", "tether", "stellar", "cardano", "xrp"]
+    var urlBase = "https://data.messari.io/api/v1/assets/"
+    var urlTail = "/metrics"
     let dispachGroup = DispatchGroup()
     
     public func getCoinsInfo(_ completionHandler: @escaping (Coin) -> Void) {
         for index in 0..<coinsTypes.count {
             dispachGroup.enter()
-            let url = "https://data.messari.io/api/v1/assets/\(coinsTypes[index])/metrics"
+            let url = urlBase + coinsTypes[index] + urlTail
             guard let url = URL(string: url) else { return }
             let request = URLRequest(url: url)
             let urlTask = URLSession.shared.dataTask(with: request) { data, _, error in
@@ -29,7 +36,6 @@ final class APIServise {
                 }
                 do {
                     let coins = try JSONDecoder().decode(Coin.self, from: data)
-                    
                     completionHandler(coins)
                 } catch {
                     print("DECODING ERROR: \(error)")

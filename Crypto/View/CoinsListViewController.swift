@@ -9,9 +9,9 @@ import UIKit
 
 class CoinsListViewController: UIViewController {
     private let tableView = UITableView()
-    private var coinsArray = [Coin]()
     
-
+    private var listViewModel = CoinListViewModel()
+    
     @objc private func logOut() {
         
         navigationController?.popViewController(animated: true)
@@ -38,17 +38,19 @@ class CoinsListViewController: UIViewController {
         addSubViews()
         makeConstraints()
         view.backgroundColor = .systemBackground
-        APIServise.shared.getCoinsInfo { [weak self] coin in
-            self?.coinsArray.append(coin)
-            DispatchQueue.main.async {
-                
-                self?.tableView.reloadData()
-                
-            }
-        }
+        updateUI()
         
         
     }
+    
+    func updateUI() {
+        listViewModel.updateController = {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
     private func addSubViews() {
         view.addSubview(tableView)
     }
@@ -63,19 +65,19 @@ class CoinsListViewController: UIViewController {
 
 extension CoinsListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        coinsArray.count
+        listViewModel.coinsArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CoinTableViewCell.identifier, for: indexPath) as? CoinTableViewCell else { return UITableViewCell() }
-        cell.coinImageView.image = UIImage(named: coinsArray[indexPath.row].coinData.symbol)
-        cell.coinNameLabel.text = coinsArray[indexPath.row].coinData.name
-        if let coinCost = coinsArray[indexPath.row].coinData.marketData.priceUSD {
+        cell.coinImageView.image = UIImage(named: listViewModel.coinsArray[indexPath.row].coinData.symbol)
+        cell.coinNameLabel.text = listViewModel.coinsArray[indexPath.row].coinData.name
+        if let coinCost = listViewModel.coinsArray[indexPath.row].coinData.marketData.priceUSD {
             cell.coinPriceUSDLabel.text = "$ price: \(coinCost.truncate(places: 3))"
         } else {
             cell.coinPriceUSDLabel.text = "$ --"
         }
-        if let priceChange = coinsArray[indexPath.row].coinData.marketData.lastHourCostChangePercent {
+        if let priceChange = listViewModel.coinsArray[indexPath.row].coinData.marketData.lastHourCostChangePercent {
             if priceChange > 0 {
                 cell.priceChangePerHourLabel.text = "↑ \(priceChange.truncate(places: 2))%"
                 cell.priceChangePerHourLabel.textColor = .systemGreen
@@ -85,7 +87,7 @@ extension CoinsListViewController: UITableViewDataSource, UITableViewDelegate {
             }
         } else {
             cell.priceChangePerHourLabel.text = "-- %"
-            cell.priceChangePerHourLabel.textColor = .black
+            cell.priceChangePerHourLabel.textColor = .systemFill
         }
         return cell
     }
