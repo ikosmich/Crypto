@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		45408A2129B600900099D827 /* CoinsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45408A2029B600900099D827 /* CoinsListViewController.swift */; };
-		456BC3B229C9AAAA0043F953 /* Double trimming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456BC3B129C9AAAA0043F953 /* Double trimming.swift */; };
+		456BC3B229C9AAAA0043F953 /* DoubleTrimming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456BC3B129C9AAAA0043F953 /* DoubleTrimming.swift */; };
 		456BC3B529C9C9F40043F953 /* CoinListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456BC3B429C9C9F40043F953 /* CoinListViewModel.swift */; };
 		457C680D29B358A00036E956 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457C680C29B358A00036E956 /* AppDelegate.swift */; };
 		457C680F29B358A00036E956 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457C680E29B358A00036E956 /* SceneDelegate.swift */; };
@@ -21,13 +21,16 @@
 		459D15AA29B362200009A1DC /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D15A929B362200009A1DC /* APIService.swift */; };
 		459D15AE29B364CC0009A1DC /* CoinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D15AD29B364CC0009A1DC /* CoinTableViewCell.swift */; };
 		459D15B429B366560009A1DC /* CoinInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D15B329B366560009A1DC /* CoinInfoViewController.swift */; };
+		45C30D4A29DCC1A00053B0D4 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C30D4929DCC1A00053B0D4 /* LoginViewModel.swift */; };
+		45C30D4C29DCC1BB0053B0D4 /* CoinInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C30D4B29DCC1BB0053B0D4 /* CoinInfoViewModel.swift */; };
+		45C30D4E29DCC3AB0053B0D4 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C30D4D29DCC3AB0053B0D4 /* Users.swift */; };
 		45E28CD429D9F35600C26C0E /* adventpro-semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45E28CD329D9F35600C26C0E /* adventpro-semibold.ttf */; };
 		45F17F0729DACFF800A2A3A9 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F17F0629DACFF800A2A3A9 /* Coin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		45408A2029B600900099D827 /* CoinsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsListViewController.swift; sourceTree = "<group>"; };
-		456BC3B129C9AAAA0043F953 /* Double trimming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double trimming.swift"; sourceTree = "<group>"; };
+		456BC3B129C9AAAA0043F953 /* DoubleTrimming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleTrimming.swift; sourceTree = "<group>"; };
 		456BC3B429C9C9F40043F953 /* CoinListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinListViewModel.swift; sourceTree = "<group>"; };
 		457C680929B358A00036E956 /* Crypto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Crypto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		457C680C29B358A00036E956 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +45,9 @@
 		459D15A929B362200009A1DC /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		459D15AD29B364CC0009A1DC /* CoinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinTableViewCell.swift; sourceTree = "<group>"; };
 		459D15B329B366560009A1DC /* CoinInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinInfoViewController.swift; sourceTree = "<group>"; };
+		45C30D4929DCC1A00053B0D4 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		45C30D4B29DCC1BB0053B0D4 /* CoinInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinInfoViewModel.swift; sourceTree = "<group>"; };
+		45C30D4D29DCC3AB0053B0D4 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		45E28CD329D9F35600C26C0E /* adventpro-semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "adventpro-semibold.ttf"; sourceTree = "<group>"; };
 		45F17F0629DACFF800A2A3A9 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,7 +66,9 @@
 		456BC3B329C9B0B80043F953 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				45C30D4929DCC1A00053B0D4 /* LoginViewModel.swift */,
 				456BC3B429C9C9F40043F953 /* CoinListViewModel.swift */,
+				45C30D4B29DCC1BB0053B0D4 /* CoinInfoViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -101,6 +109,7 @@
 			children = (
 				459D15A829B361FD0009A1DC /* Network */,
 				45F17F0629DACFF800A2A3A9 /* Coin.swift */,
+				45C30D4D29DCC3AB0053B0D4 /* Users.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -148,7 +157,7 @@
 			children = (
 				457C682429B359DC0036E956 /* MyButton.swift */,
 				457C682329B359DC0036E956 /* MyTextField.swift */,
-				456BC3B129C9AAAA0043F953 /* Double trimming.swift */,
+				456BC3B129C9AAAA0043F953 /* DoubleTrimming.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -232,11 +241,14 @@
 				457C681129B358A00036E956 /* LoginViewController.swift in Sources */,
 				459D15B429B366560009A1DC /* CoinInfoViewController.swift in Sources */,
 				457C680D29B358A00036E956 /* AppDelegate.swift in Sources */,
+				45C30D4E29DCC3AB0053B0D4 /* Users.swift in Sources */,
 				457C682629B359DC0036E956 /* MyButton.swift in Sources */,
+				45C30D4A29DCC1A00053B0D4 /* LoginViewModel.swift in Sources */,
 				457C680F29B358A00036E956 /* SceneDelegate.swift in Sources */,
-				456BC3B229C9AAAA0043F953 /* Double trimming.swift in Sources */,
+				456BC3B229C9AAAA0043F953 /* DoubleTrimming.swift in Sources */,
 				456BC3B529C9C9F40043F953 /* CoinListViewModel.swift in Sources */,
 				457C682529B359DC0036E956 /* MyTextField.swift in Sources */,
+				45C30D4C29DCC1BB0053B0D4 /* CoinInfoViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

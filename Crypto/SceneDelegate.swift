@@ -19,19 +19,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: scene)
         let loginVC = LoginViewController()
-        
         let navController = UINavigationController()
-        
         navController.viewControllers = [loginVC]
-        
-        
-       
-        navController.navigationBar.titleTextAttributes = [
-            .font: UIFont(name: "adventpro-semibold", size: 25) ?? UIFont()
-        ]
-        navController.navigationBar.largeTitleTextAttributes = [
-            .font: UIFont(name: "adventpro-semibold", size: 35) ?? UIFont()
-        ]
+        navController.navigationItem.largeTitleDisplayMode = .never
+        navController.navigationBar.titleTextAttributes = [.font: UIFont(name: "adventpro-semibold", size: 25) ?? UIFont()]
         window.rootViewController = navController
         self.window = window
         window.makeKeyAndVisible()

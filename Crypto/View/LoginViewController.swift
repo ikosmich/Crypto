@@ -16,6 +16,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.font = UIFont(name: "adventpro-regular", size: 70)
         lbl.text = "Crypto wallet"
+        lbl.textColor = .black
         lbl.adjustsFontSizeToFitWidth = true
         lbl.minimumScaleFactor = 0.5
         lbl.textAlignment = .center
@@ -107,15 +108,22 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return img
     }()
     
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        UserDefaults.standard.set(("1234, 1234"), forKey: "users")
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 203/255, green: 223/255, blue: 189/255, alpha: 1)
         setupUI()
-        
         usernameTextField.delegate = self
         passwordTextField.delegate = self
     }
-    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
