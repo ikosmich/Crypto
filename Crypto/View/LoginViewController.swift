@@ -76,20 +76,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }()
     
     @objc func buttonPressed() {
-        let listVC = CoinsListViewController()
-        // Fixed username/password
-        switch (usernameTextField.text, passwordTextField.text) {
-        case ("1234", "1234"):
-            usernameTextField.text = ""
-            passwordTextField.text = ""
-            navigationController?.pushViewController(listVC, animated: true)
-        default:
+        switch loginViewModel.logInButtonPressed(with: usernameTextField.text ?? "", password: passwordTextField.text ?? "") {
+        case false:
             let alert = UIAlertController(title: "Wrong username or password", message: nil, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .destructive))
             self.present(alert, animated: true)
+        case true:
+            let listVC = CoinsListViewController()
+            navigationController?.viewControllers[0] = listVC
         }
-        
-
     }
     
     private lazy var signUpButton: MyButton = {
@@ -108,13 +103,23 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return img
     }()
     
+    var loginViewModel: LoginViewModelProtocol
+    
     init() {
+        self.loginViewModel = LoginViewModel()
         super.init(nibName: nil, bundle: nil)
-        UserDefaults.standard.set(("1234, 1234"), forKey: "users")
+//MARK: Hardcode default test user
+        UserDefaults.standard.set([["1234", "1234"]], forKey: "users")
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func listenViewModel() {
+        loginViewModel.updateView = { [weak self] in
+            guard let _ = self else { return }
+        }
     }
     
     override func viewDidLoad() {

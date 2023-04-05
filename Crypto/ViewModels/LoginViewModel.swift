@@ -8,23 +8,25 @@
 import Foundation
 
 protocol LoginViewModelProtocol {
+    var updateView: () -> Void { get set }
     var login: String? { get set }
     var password: String? { get set }
-    func logInButtonPressed()
+    var usersData: UsersProtocol { get set }
+    func logInButtonPressed(with login: String, password: String) -> Bool
     func signUpButtonPressed()
 }
 
-class LoginViewModel: LoginViewModelProtocol {
+final class LoginViewModel: LoginViewModelProtocol {
+    var updateView: () -> Void = {}
     var login: String?
-    
     var password: String?
-    
-    func logInButtonPressed() {
-        
+    var usersData: UsersProtocol = Users.shared
+    func logInButtonPressed(with login: String, password: String) -> Bool {
+        usersData.logIn(login: login, password: password)
     }
     
     func signUpButtonPressed() {
-        
+        // New users add
     }
     
     

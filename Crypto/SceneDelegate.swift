@@ -18,9 +18,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let scene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: scene)
-        let loginVC = LoginViewController()
         let navController = UINavigationController()
-        navController.viewControllers = [loginVC]
+        switch Users.shared.isAreadyLogedIn() {
+        case true:
+            navController.viewControllers = [CoinsListViewController()]
+        case false:
+            navController.viewControllers = [LoginViewController()]
+        }
         navController.navigationItem.largeTitleDisplayMode = .never
         navController.navigationBar.titleTextAttributes = [.font: UIFont(name: "adventpro-semibold", size: 25) ?? UIFont()]
         window.rootViewController = navController

@@ -38,7 +38,7 @@ final class APIService: APIServiceProtocol {
                     let coins = try JSONDecoder().decode(Coin.self, from: data)
                     completionHandler(coins)
                 } catch {
-                    print("DECODING ERROR: \(error)")
+                    print("DECODING ERROR: \(String(data: data, encoding: .utf8) ?? "")")
                 }
             }
             urlTask.resume()

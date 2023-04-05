@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+protocol CoinInfoViewModelProtocol {}
+
+class CoinInfoViewModel {}

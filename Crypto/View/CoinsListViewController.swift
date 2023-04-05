@@ -23,10 +23,17 @@ class CoinsListViewController: UIViewController {
         return spinner
     }()
     
-    private var listViewModel: CoinListViewModelProtocol?
+    private var listViewModel: CoinListViewModelProtocol
     
+    init() {
+        self.listViewModel = CoinListViewModel()
+        super.init(nibName: nil, bundle: nil)
+    }
     
-
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     deinit {
         print("list controller died".uppercased())
     }
@@ -34,26 +41,25 @@ class CoinsListViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.title = "Coins"
         navigationItem.rightBarButtonItem = .init(title: nil, image: UIImage(systemName: "arrow.up.arrow.down"), target: self, action: #selector(sortList))
-        navigationItem.leftBarButtonItem = .init(title: nil, image: .init(systemName: "arrowshape.backward.fill"), target: self, action: #selector(logOut))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Log out", image: nil, target: self, action: #selector(logOut))
         tableView.register(CoinTableViewCell.self, forCellReuseIdentifier: CoinTableViewCell.identifier)
         tableView.dataSource = self
         tableView.delegate = self
         view.backgroundColor = .systemBackground
-        listViewModel = CoinListViewModel()
         addSubViews()
         makeConstraints()
         spinner.startAnimating()
         listenViewModel()
     }
     
-    func listenViewModel() {
-        if var vm = listViewModel {
-            vm.updateView = { [weak self] coin in
-                guard let self = self else { return }
-                DispatchQueue.main.async {
-                    self.spinner.stopAnimating()
-                    self.tableView.reloadData()
-                }
+    
+    
+    private func listenViewModel() {
+        listViewModel.updateView = { [weak self] coin in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.spinner.stopAnimating()
+                self.tableView.reloadData()
             }
         }
     }
@@ -72,37 +78,31 @@ class CoinsListViewController: UIViewController {
                                     ])
     }
     @objc private func logOut() {
-        navigationController?.popViewController(animated: true)
+        listViewModel.logout()
+        navigationController?.viewControllers[0] = LoginViewController()
     }
     
     @objc private func sortList() {
-        guard let vm = listViewModel else { return }
-        vm.sortButtonPressed()
+        listViewModel.sortButtonPressed()
     }
+    
 }
-
-
 
 extension CoinsListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let vm = listViewModel {
-            return vm.coinsArray.count
-        } else {
-            return 0
-        }
+        return listViewModel.coinsArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CoinTableViewCell.identifier, for: indexPath) as? CoinTableViewCell else { return UITableViewCell() }
-        guard let vm = listViewModel else { return UITableViewCell() }
-        cell.coinImageView.image = UIImage(named: vm.coinsArray[indexPath.row].coinData.symbol)
-        cell.coinNameLabel.text = vm.coinsArray[indexPath.row].coinData.name
-        if let coinCost = vm.coinsArray[indexPath.row].coinData.marketData.priceUSD {
+        cell.coinImageView.image = UIImage(named: listViewModel.coinsArray[indexPath.row].coinData.symbol)
+        cell.coinNameLabel.text = listViewModel.coinsArray[indexPath.row].coinData.name
+        if let coinCost = listViewModel.coinsArray[indexPath.row].coinData.marketData.priceUSD {
             cell.coinPriceUSDLabel.text = "$ price: \(coinCost.truncate(places: 3))"
         } else {
             cell.coinPriceUSDLabel.text = "$ --"
         }
-        if let priceChange = vm.coinsArray[indexPath.row].coinData.marketData.lastHourCostChangePercent {
+        if let priceChange = listViewModel.coinsArray[indexPath.row].coinData.marketData.lastHourCostChangePercent {
             if priceChange > 0 {
                 cell.priceChangePerHourLabel.text = "↑ \(priceChange.truncate(places: 2))%"
                 cell.priceChangePerHourLabel.textColor = .systemGreen
@@ -119,7 +119,9 @@ extension CoinsListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let infoVC = CoinInfoViewController()
-        navigationController?.pushViewController(infoVC, animated: true)
+        let coinFromRow = listViewModel.cellTapped(at: indexPath.row)
+        infoVC.labelTextDict = coinFromRow
+        navigationController?.viewControllers.append(infoVC)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
