@@ -92,6 +92,7 @@ class BaseLoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 203/255, green: 223/255, blue: 189/255, alpha: 1)
+        view.overrideUserInterfaceStyle = .light
         setupUI()
         // Для возможности убрать клавиатуру при тапе вне текстфилда и для переключения с 1 на 2 текстфилд кнопкой return
         usernameTextField.delegate = self
