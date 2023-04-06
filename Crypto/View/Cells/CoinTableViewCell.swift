@@ -8,9 +8,12 @@
 import UIKit
 
 protocol CoinTableViewCellProtocol {
+    static var identifier: String { get }
     var coinImageView: UIImageView { get }
     var coinNameLabel: UILabel { get }
     var coinPriceUSDLabel: UILabel { get }
+    var priceChangePerHourLabel: UILabel { get }
+    func makeCell()
 }
 
 class CoinTableViewCell: UITableViewCell, CoinTableViewCellProtocol {
@@ -56,7 +59,6 @@ class CoinTableViewCell: UITableViewCell, CoinTableViewCellProtocol {
             priceChangePerHourLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5)
         ])
     }
-    
 }
 
 

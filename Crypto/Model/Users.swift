@@ -17,7 +17,7 @@ protocol UsersProtocol {
     func logout()
 }
 
-class Users: UsersProtocol {
+final class Users: UsersProtocol {
     static var shared = Users()
     private init() {}
     var userDefaults: UserDefaults = UserDefaults.standard
