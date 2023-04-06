@@ -25,7 +25,7 @@ final class CoinListViewModel: CoinListViewModelProtocol {
             self.updateView(newValue)
         }
     }
-    public var updateView: (([Coin]) -> ()) = {_ in }
+    var updateView: (([Coin]) -> ()) = {_ in }
     
     func getCoins() {
         apiManager.getCoinsInfo { [weak self] coin in
@@ -34,7 +34,6 @@ final class CoinListViewModel: CoinListViewModelProtocol {
     }
     
     private var sortedAscending = true
-    
     func sortButtonPressed() {
         if sortedAscending {
             coinsArray.sort { first, second in

@@ -40,14 +40,13 @@ final class APIService: APIServiceProtocol {
                 } catch {
                     print("DECODING ERROR: \(String(data: data, encoding: .utf8) ?? "")")
                 }
+                self.dispachGroup.leave()
             }
             urlTask.resume()
-            dispachGroup.leave()
         }
         dispachGroup.notify(queue: .main) {
-            print("Group notify")
+            print("getCoinInfo tasks done")
         }
-      
     }
 }
 
