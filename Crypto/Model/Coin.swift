@@ -7,16 +7,16 @@
 
 import Foundation
 
-struct Coin: Codable {
+struct Coin: Decodable {
     let dataStatus: DataStatus
-    let coinData: CoinData
+    let coinData: CoinData?
     enum CodingKeys: String, CodingKey {
         case dataStatus = "status"
         case coinData = "data"
     }
 }
 
-struct DataStatus: Codable {
+struct DataStatus: Decodable {
     let requestsLeft: UInt
     let dataRecieveDate: String
     let errorCode: UInt?
@@ -29,7 +29,7 @@ struct DataStatus: Codable {
     }
 }
 
-struct CoinData: Codable {
+struct CoinData: Decodable {
     let symbol: String
     let name: String
     let marketData: MarketData
@@ -40,7 +40,7 @@ struct CoinData: Codable {
     }
 }
 
-struct MarketData: Codable {
+struct MarketData: Decodable {
     let priceUSD: Double?
     let lastHourCostChangePercent: Double?
     let lastDayCostChangePercent: Double?
@@ -55,7 +55,7 @@ struct MarketData: Codable {
     }
 }
 
-struct OpenHighLowCloseVolumeDataLastHourData: Codable {
+struct OpenHighLowCloseVolumeDataLastHourData: Decodable {
     let openPrice: Double
     let highPrice: Double
     let lowPrice: Double
@@ -68,7 +68,7 @@ struct OpenHighLowCloseVolumeDataLastHourData: Codable {
     }
 }
 
-struct OpenHighLowCloseVolumeDataLastDayData: Codable {
+struct OpenHighLowCloseVolumeDataLastDayData: Decodable {
     let openPrice: Double
     let highPrice: Double
     let lowPrice: Double

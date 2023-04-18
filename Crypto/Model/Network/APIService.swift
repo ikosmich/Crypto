@@ -8,44 +8,55 @@
 import Foundation
 
 fileprivate protocol APIServiceProtocol {
-    var coinsTypes: [String] { get }
     var urlBase: String { get }
     var urlTail: String { get }
-    func getCoinsInfo(_ completionHandler: @escaping (Coin) -> Void)
+    func getCoinsInfo(_ completionHandler: @escaping ([Coin]?) -> Void)
 }
 
+fileprivate enum coinsTypes: String, CaseIterable {
+    case btc, eth, tron, luna, polkadot, dogecoin, tether, stellar, cardano, xrp
+}
+
+//FIXME: апи на 1 запрос
 final class APIService: APIServiceProtocol {
     static var shared = APIService()
     private init() {}
-    fileprivate let coinsTypes = ["btc", "eth", "tron", "luna", "polkadot", "dogecoin", "tether", "stellar", "cardano", "xrp"]
+    
     var urlBase = "https://data.messari.io/api/v1/assets/"
     var urlTail = "/metrics"
     let dispachGroup = DispatchGroup()
     
-    public func getCoinsInfo(_ completionHandler: @escaping (Coin) -> Void) {
-        for index in 0..<coinsTypes.count {
+    public func getCoinsInfo(_ completionHandler: @escaping ([Coin]?) -> Void) {
+        var coinsArray = [Coin]()
+        for index in coinsTypes.allCases {
             dispachGroup.enter()
-            let url = urlBase + coinsTypes[index] + urlTail
+            let url = urlBase + index.rawValue + urlTail
             guard let url = URL(string: url) else { return }
             let request = URLRequest(url: url)
             let urlTask = URLSession.shared.dataTask(with: request) { data, _, error in
-                guard let data = data else { return }
-                guard error == nil else {
+                guard let data = data, error == nil else {
                     print("Task error\n\(String(describing: error))\n")
+                    completionHandler(nil)
+                    self.dispachGroup.leave()
                     return
                 }
+                
                 do {
-                    let coins = try JSONDecoder().decode(Coin.self, from: data)
-                    completionHandler(coins)
+                    let coin = try JSONDecoder().decode(Coin.self, from: data)
+                    if coin.coinData != nil {
+                        coinsArray.append(coin)
+                    }
+                    print(coin.coinData?.name ?? "no coin get")
+                    self.dispachGroup.leave()
                 } catch {
-                    print("DECODING ERROR: \(String(data: data, encoding: .utf8) ?? "")")
+                    self.dispachGroup.leave()
                 }
-                self.dispachGroup.leave()
             }
             urlTask.resume()
         }
         dispachGroup.notify(queue: .main) {
-            print("getCoinInfo tasks done")
+            print("getCoinInfo tasks done, array count: \(coinsArray.count)")
+            completionHandler(coinsArray)
         }
     }
 }

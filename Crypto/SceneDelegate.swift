@@ -26,6 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             navController.viewControllers = [LoginViewController()]
         }
         navController.navigationItem.largeTitleDisplayMode = .never
+        //FIXME: ("") настройки нав бара лучше вынести
         navController.navigationBar.titleTextAttributes = [.font: UIFont(name: "adventpro-semibold", size: 25) ?? UIFont()]
         window.rootViewController = navController
         self.window = window

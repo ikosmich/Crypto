@@ -77,15 +77,17 @@ extension BaseListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CoinTableViewCell.identifier, for: indexPath) as? CoinTableViewCell else { return UITableViewCell() }
-        cell.coinImageView.image = UIImage(named: listViewModel.coinsArray[indexPath.row].coinData.symbol)
-        cell.coinNameLabel.text = listViewModel.coinsArray[indexPath.row].coinData.name
-        if let coinCost = listViewModel.coinsArray[indexPath.row].coinData.marketData.priceUSD {
+//FIXME: ("") почему логика не в ячейке
+        cell.coinImageView.image = UIImage(named: listViewModel.coinsArray[indexPath.row].coinData?.symbol ?? "")
+        cell.coinNameLabel.text = listViewModel.coinsArray[indexPath.row].coinData?.name
+        if let coinCost = listViewModel.coinsArray[indexPath.row].coinData?.marketData.priceUSD {
             cell.coinPriceUSDLabel.text = "$ price: \(coinCost.truncate(places: 3))"
         } else {
             cell.coinPriceUSDLabel.text = "$ --"
         }
-        if let priceChange = listViewModel.coinsArray[indexPath.row].coinData.marketData.lastHourCostChangePercent {
+        if let priceChange = listViewModel.coinsArray[indexPath.row].coinData?.marketData.lastHourCostChangePercent {
             if priceChange > 0 {
                 cell.priceChangePerHourLabel.text = "↑ \(priceChange.truncate(places: 2))%"
                 cell.priceChangePerHourLabel.textColor = .systemGreen
@@ -101,6 +103,7 @@ extension BaseListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//FIXME: ("") почему не заижектел
         let infoVC = CoinInfoViewController()
         let coinFromRow = listViewModel.cellTapped(at: indexPath.row)
         infoVC.labelTextDict = coinFromRow

@@ -20,31 +20,35 @@ protocol UsersProtocol {
 final class Users: UsersProtocol {
     static var shared = Users()
     private init() {}
+    enum StorageKeys: String {
+        case isAreadyLogedIn
+        case users
+    }
     var userDefaults: UserDefaults = UserDefaults.standard
     func isAreadyLogedIn() -> Bool {
-        userDefaults.bool(forKey: "isAreadyLogedIn")
+        userDefaults.bool(forKey: StorageKeys.isAreadyLogedIn.rawValue)
     }
     var login: String?
     var password: String?
     func logIn(login: String, password: String) -> Bool {
         var isUser = false
-        guard let storedPairs = userDefaults.array(forKey: "users") as? [[String]] else { return isUser }
+        //Перебираем пары Логин, Пароль из UD для поиска совпадения с введенной парой. После найденного совпадения отмечаем в UD, что пользователь залогинился.
+        
+        guard let storedPairs = userDefaults.array(forKey: StorageKeys.users.rawValue) as? [[String]] else { return isUser }
         for namePasswordPair in storedPairs {
             if namePasswordPair == [login, password] {
                 isUser = true
-                userDefaults.set(true, forKey: "isAreadyLogedIn")
+                userDefaults.set(isUser, forKey: StorageKeys.isAreadyLogedIn.rawValue)
             }
         }
         return isUser
     }
     
     func logout() {
-        userDefaults.set(false, forKey: "isAreadyLogedIn")
+        userDefaults.set(false, forKey: StorageKeys.isAreadyLogedIn.rawValue)
     }
     
     func signUp(login: String, password: String) {
         // New users add
     }
-    
-    
 }

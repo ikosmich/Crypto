@@ -29,7 +29,7 @@ final class CoinListViewModel: CoinListViewModelProtocol {
     
     func getCoins() {
         apiManager.getCoinsInfo { [weak self] coin in
-            self?.coinsArray.append(coin)
+            self?.coinsArray = coin ?? []
         }
     }
     
@@ -37,15 +37,15 @@ final class CoinListViewModel: CoinListViewModelProtocol {
     func sortButtonPressed() {
         if sortedAscending {
             coinsArray.sort { first, second in
-                let firstPriceChange = first.coinData.marketData.lastHourCostChangePercent ?? 0
-                let secondPriceChange = second.coinData.marketData.lastHourCostChangePercent ?? 0
+                let firstPriceChange = first.coinData?.marketData.lastHourCostChangePercent ?? 0
+                let secondPriceChange = second.coinData?.marketData.lastHourCostChangePercent ?? 0
                 sortedAscending = false
                 return firstPriceChange < secondPriceChange
             }
         } else {
             coinsArray.sort { first, second in
-                let firstPriceChange = first.coinData.marketData.lastHourCostChangePercent ?? 0
-                let secondPriceChange = second.coinData.marketData.lastHourCostChangePercent ?? 0
+                let firstPriceChange = first.coinData?.marketData.lastHourCostChangePercent ?? 0
+                let secondPriceChange = second.coinData?.marketData.lastHourCostChangePercent ?? 0
                 sortedAscending = true
                 return firstPriceChange > secondPriceChange
             }
@@ -53,7 +53,10 @@ final class CoinListViewModel: CoinListViewModelProtocol {
     }
        
     func cellTapped(at index: Int) -> [String: String] {
-        let coinFromRow = coinsArray[index].coinData
+        guard let coinFromRow = coinsArray[index].coinData else {
+            return [:]
+        }
+//FIXME: ("") модель?
         return ["coinName": coinFromRow.name,
                 "coinCostUSD": "\(coinFromRow.marketData.priceUSD?.truncate(places: 3) ?? 0)",
                 "coinSymbol": coinFromRow.symbol,

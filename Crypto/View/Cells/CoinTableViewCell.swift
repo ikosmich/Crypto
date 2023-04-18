@@ -23,6 +23,12 @@ class CoinTableViewCell: UITableViewCell, CoinTableViewCellProtocol {
     var priceChangePerHourLabel = UILabel()
     static let identifier = "CoinCell"
     
+    override func prepareForReuse() {
+        
+    }
+    
+//FIXME: ("") дид сет или препаре фор юз
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         makeCell()

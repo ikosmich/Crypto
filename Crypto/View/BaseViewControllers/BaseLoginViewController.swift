@@ -7,6 +7,7 @@
 
 import UIKit
 
+//FIXME: ("") базовый вью контроллер под каждый вк
 class BaseLoginViewController: UIViewController {
     
     lazy var label: UILabel = {
@@ -56,6 +57,7 @@ class BaseLoginViewController: UIViewController {
         txtField.tag = 2
         txtField.autocorrectionType = .no
         txtField.autocapitalizationType = .none
+        txtField.isSecureTextEntry = true
         return txtField
     }()
     
@@ -158,6 +160,7 @@ extension BaseLoginViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        //FIXME: ("") зачем через тэги
         let nextTag = textField.tag + 1
         guard let nextTextField = textField.superview?.viewWithTag(nextTag) else {
             textField.resignFirstResponder()
