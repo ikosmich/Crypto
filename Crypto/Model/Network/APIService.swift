@@ -40,13 +40,12 @@ final class APIService: APIServiceProtocol {
                     self.dispachGroup.leave()
                     return
                 }
-                
                 do {
                     let coin = try JSONDecoder().decode(Coin.self, from: data)
                     if coin.coinData != nil {
                         coinsArray.append(coin)
                     }
-                    print(coin.coinData?.name ?? "no coin get")
+                    print(coin.coinData?.name ?? "no coin got")
                     self.dispachGroup.leave()
                 } catch {
                     self.dispachGroup.leave()

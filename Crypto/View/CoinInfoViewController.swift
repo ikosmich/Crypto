@@ -7,16 +7,30 @@
 
 import UIKit
 
-class CoinInfoViewController: BaseInfoViewController {
+class CoinInfoViewController: UIViewController {
+    
+    init (_ coinData: [String:String]) {
+        self.labelTextDict = coinData
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = .systemBackground
+        navigationItem.title = "Detailed info"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.uturn.left"), style: .done, target: self, action: #selector(backToList))
+        addSubviews()
+        makeConstraints()
+        makeImageAndText()
     }
     
-    var labelTextDict = [String: String]()
+    var labelTextDict: [String: String]
     
-    override func makeImageAndText() {
+    func makeImageAndText() {
         let str = """
             \(labelTextDict["coinName"] ?? "")
 
@@ -34,7 +48,37 @@ class CoinInfoViewController: BaseInfoViewController {
         }
     }
 
-    @objc override func backToList() {
+    var coinLogoView: UIImageView = {
+        let imgView = UIImageView()
+        imgView.translatesAutoresizingMaskIntoConstraints = false
+        imgView.contentMode = .scaleAspectFill
+        return imgView
+    }()
+    
+    var infoLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.contentMode = .left
+        lbl.numberOfLines = 0
+        lbl.font = UIFont(name: "adventpro-regular", size: 22)
+        return lbl
+    }()
+    
+    func addSubviews() {
+        view.addSubview(coinLogoView)
+        view.addSubview(infoLabel)
+    }
+    
+    func makeConstraints() {
+        NSLayoutConstraint.activate([coinLogoView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -(view.frame.midY / 3)),
+                                     coinLogoView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                                     coinLogoView.widthAnchor.constraint(equalToConstant: view.frame.width / 2),
+                                     coinLogoView.heightAnchor.constraint(equalTo: coinLogoView.widthAnchor),
+                                     infoLabel.topAnchor.constraint(equalTo: coinLogoView.bottomAnchor, constant: 10),
+                                     infoLabel.widthAnchor.constraint(equalTo: view.widthAnchor)])
+    }
+    
+    @objc func backToList() {
         navigationController?.viewControllers.removeLast(1)
     }
 }

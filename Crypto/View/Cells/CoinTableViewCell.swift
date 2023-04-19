@@ -13,6 +13,7 @@ protocol CoinTableViewCellProtocol {
     var coinNameLabel: UILabel { get }
     var coinPriceUSDLabel: UILabel { get }
     var priceChangePerHourLabel: UILabel { get }
+    func makeCellContent(image: String?, name: String?, price: Double?, priceChange: Double?)
     func makeCell()
 }
 
@@ -23,14 +24,8 @@ class CoinTableViewCell: UITableViewCell, CoinTableViewCellProtocol {
     var priceChangePerHourLabel = UILabel()
     static let identifier = "CoinCell"
     
-    override func prepareForReuse() {
-        
-    }
-    
-//FIXME: ("") дид сет или препаре фор юз
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: .default, reuseIdentifier: reuseIdentifier)
         makeCell()
     }
     
@@ -38,7 +33,7 @@ class CoinTableViewCell: UITableViewCell, CoinTableViewCellProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func makeCell() {
+    func makeCell () {
         coinNameLabel.font = UIFont(name: "adventpro-semibold", size: 27)
         coinPriceUSDLabel.font = UIFont(name: "adventpro-regular", size: 18)
         priceChangePerHourLabel.font = UIFont(name: "adventpro-regular", size: 18)
@@ -64,6 +59,28 @@ class CoinTableViewCell: UITableViewCell, CoinTableViewCellProtocol {
             priceChangePerHourLabel.topAnchor.constraint(equalTo: coinNameLabel.bottomAnchor, constant: 10),
             priceChangePerHourLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5)
         ])
+    }
+    
+    func makeCellContent(image: String?, name: String?, price: Double?, priceChange: Double?) {
+        coinImageView.image = UIImage(named: image ?? "xmark")
+        coinNameLabel.text = name
+        if let price = price {
+            coinPriceUSDLabel.text = "$ price: \(price.truncate(places: 3))"
+        } else {
+            coinPriceUSDLabel.text = "$ --"
+        }
+        if let priceChange = priceChange {
+            if priceChange > 0 {
+                priceChangePerHourLabel.text = "↑ \(priceChange.truncate(places: 2))%"
+                priceChangePerHourLabel.textColor = .systemGreen
+            } else {
+                priceChangePerHourLabel.text = "↓ \(priceChange.truncate(places: 2))%"
+                priceChangePerHourLabel.textColor = .systemRed
+            }
+        } else {
+            priceChangePerHourLabel.text = "-- %"
+            priceChangePerHourLabel.textColor = .systemIndigo
+        }
     }
 }
 

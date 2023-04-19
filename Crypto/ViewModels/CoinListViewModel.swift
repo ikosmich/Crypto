@@ -51,12 +51,13 @@ final class CoinListViewModel: CoinListViewModelProtocol {
             }
         }
     }
-       
+    
+    //FIXME: переписать
+    
     func cellTapped(at index: Int) -> [String: String] {
         guard let coinFromRow = coinsArray[index].coinData else {
             return [:]
         }
-//FIXME: ("") модель?
         return ["coinName": coinFromRow.name,
                 "coinCostUSD": "\(coinFromRow.marketData.priceUSD?.truncate(places: 3) ?? 0)",
                 "coinSymbol": coinFromRow.symbol,

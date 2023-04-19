@@ -32,7 +32,7 @@ final class Users: UsersProtocol {
     var password: String?
     func logIn(login: String, password: String) -> Bool {
         var isUser = false
-        //Перебираем пары Логин, Пароль из UD для поиска совпадения с введенной парой. После найденного совпадения отмечаем в UD, что пользователь залогинился.
+        //Перебираем пары [Логин, Пароль] из UD для поиска совпадения с введенной парой. После найденного совпадения отмечаем в UD, что пользователь залогинился.
         
         guard let storedPairs = userDefaults.array(forKey: StorageKeys.users.rawValue) as? [[String]] else { return isUser }
         for namePasswordPair in storedPairs {
